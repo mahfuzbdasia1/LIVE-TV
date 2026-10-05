@@ -1,0 +1,54 @@
+.bar {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #1a0507, #3a0a0f 50%, #1a0507);
+  border-bottom: 1px solid rgba(229, 9, 20, .35);
+  color: #ffe3b0;
+  font-size: .82rem;
+  line-height: 1;
+}
+.bar::before, .bar::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 40px;
+  z-index: 1;
+  pointer-events: none;
+}
+.bar::before { left: 0; background: linear-gradient(90deg, #1a0507, transparent); }
+.bar::after { right: 0; background: linear-gradient(270deg, #1a0507, transparent); }
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 45s linear infinite;
+  will-change: transform;
+}
+.bar:hover .track { animation-play-state: paused; }
+
+.group { display: flex; flex-shrink: 0; }
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: .6rem 0 .6rem 1.6rem;
+  white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.dot { color: #e50914; font-style: normal; font-size: .7rem; }
+
+/* content moves right -> left */
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 620px) {
+  .bar { font-size: .74rem; }
+  .track { animation-duration: 38s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+  .bar { overflow-x: auto; }
+}

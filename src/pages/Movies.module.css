@@ -1,0 +1,91 @@
+.searchRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.input {
+  flex: 1;
+  background: var(--bg-input);
+  border: 0.5px solid var(--border);
+  color: var(--text);
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: rgba(200, 169, 110, 0.45);
+}
+
+.input::placeholder {
+  color: var(--text-dim);
+}
+
+.btn {
+  padding: 11px 28px;
+  background: var(--gold);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  font-family: var(--font);
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--gold-hover);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.sectionLabel {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Layout: sidebar + content ---------- */
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:2rem;align-items:start}
+.content{min-width:0}
+.quickBar{display:none}
+.resultsHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:1rem;flex-wrap:wrap}
+.resultsHead .sectionLabel{margin-bottom:0}
+.sortSelect{background:#171717;color:#ddd;border:1px solid #2a2a2a;border-radius:8px;padding:7px 10px;font-size:.8rem;cursor:pointer;outline:none}
+.sortSelect:disabled{opacity:.4;cursor:not-allowed}
+.searchHint{color:#8a8a8a;font-size:.8rem;margin:-1rem 0 1.2rem}
+.searchHint button{background:none;border:0;color:#e50914;cursor:pointer;font-weight:700;padding:0 4px}
+
+@media (max-width:900px){
+  .layout{display:block}
+  .searchRow{margin-bottom:1rem}
+  .btn{padding:11px 18px}
+  .quickBar{display:flex;gap:8px;align-items:center;margin:0 -1rem 1.2rem;padding:0 1rem}
+  .filterBtn{flex:0 0 auto;display:flex;align-items:center;gap:6px;background:#fff;color:#111;border:0;border-radius:999px;padding:8px 14px;font-weight:800;font-size:.8rem;cursor:pointer}
+  .badge{background:#e50914;color:#fff;border-radius:999px;min-width:18px;height:18px;display:inline-grid;place-items:center;font-size:.68rem}
+  .chipRow{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1;padding-bottom:2px}
+  .chipRow::-webkit-scrollbar{display:none}
+  .quickChip{flex:0 0 auto;white-space:nowrap;background:#161616;border:1px solid #262626;color:#bbb;border-radius:999px;padding:8px 14px;font-size:.8rem;cursor:pointer}
+  .quickChipActive{background:#e50914;border-color:#e50914;color:#fff;font-weight:700}
+}
+
+.ageBackdrop{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.8);display:grid;place-items:center;padding:16px}
+.ageBox{width:min(400px,100%);background:#141414;border:1px solid #2a2a2a;border-radius:14px;padding:26px 22px;text-align:center}
+.ageIcon{font-size:2.2rem}
+.ageBox h3{margin:.4rem 0 .5rem;font-size:1.2rem}
+.ageBox p{color:#aaa;font-size:.9rem;line-height:1.5}
+.ageBtns{display:flex;gap:10px;margin-top:1.3rem}
+.ageBtns button{flex:1;border-radius:10px;padding:12px 8px;font-weight:800;font-size:.88rem;cursor:pointer}
+.ageNo{background:#1d1d1d;color:#ddd;border:1px solid #2f2f2f}
+.ageYes{background:#e50914;color:#fff;border:0}

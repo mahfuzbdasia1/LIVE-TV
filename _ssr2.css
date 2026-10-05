@@ -1,0 +1,1231 @@
+/* ../../home/claude/proj/src/components/MediaCard.module.css */
+.MediaCard_card {
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+  animation: MediaCard_fadeIn 0.35s ease both;
+}
+@keyframes MediaCard_fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.MediaCard_card:hover {
+  border-color: rgba(200, 169, 110, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+.MediaCard_card.MediaCard_selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(200, 169, 110, 0.3);
+}
+.MediaCard_poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #161616;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.MediaCard_poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.MediaCard_card:hover .MediaCard_poster img {
+  transform: scale(1.05);
+}
+.MediaCard_noPoster {
+  font-size: 2rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+.MediaCard_info {
+  padding: 8px 10px 10px;
+  position: relative;
+}
+.MediaCard_rating {
+  float: right;
+  font-size: 10px;
+  color: var(--gold);
+  margin-top: 1px;
+}
+.MediaCard_title {
+  font-size: 12px;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 38px;
+  line-height: 1.3;
+}
+.MediaCard_year {
+  font-size: 11px;
+  color: #444;
+  margin-top: 3px;
+}
+
+/* ../../home/claude/proj/src/components/MediaGrid.module.css */
+.MediaGrid_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 1.1rem;
+}
+.MediaGrid_skeleton {
+  border-radius: 8px;
+  aspect-ratio: 2 / 3;
+  background:
+    linear-gradient(
+      90deg,
+      #111 25%,
+      #1c1c1c 50%,
+      #111 75%);
+  background-size: 200% 100%;
+  animation: MediaGrid_shimmer 1.5s infinite;
+}
+@keyframes MediaGrid_shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+.MediaGrid_empty {
+  grid-column: 1 / -1;
+  color: var(--text-dim);
+  font-style: italic;
+  text-align: center;
+  padding: 3rem 0;
+  font-size: 15px;
+}
+@media (max-width: 600px) {
+  .MediaGrid_grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.75rem;
+  }
+}
+@media (max-width: 360px) {
+  .MediaGrid_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ../../home/claude/proj/src/components/MovieFilters.module.css */
+.MovieFilters_panel {
+  position: sticky;
+  top: 84px;
+  align-self: start;
+  max-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  background: #0e0e0e;
+  border: 1px solid #1c1c1c;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.MovieFilters_scroll {
+  overflow-y: auto;
+  padding: 6px 14px 14px;
+  flex: 1;
+  overscroll-behavior: contain;
+}
+.MovieFilters_sheetHead,
+.MovieFilters_footer,
+.MovieFilters_backdrop {
+  display: none;
+}
+.MovieFilters_section {
+  padding: 12px 0 4px;
+}
+.MovieFilters_section h3 {
+  font-size: .66rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #666;
+  font-weight: 700;
+  margin: 0 0 8px 4px;
+}
+.MovieFilters_list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.MovieFilters_item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-left: 3px solid transparent;
+  color: #b5b5b5;
+  padding: 8px 10px;
+  border-radius: 0 8px 8px 0;
+  font-size: .86rem;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.MovieFilters_item:hover {
+  background: #171717;
+  color: #fff;
+}
+.MovieFilters_item.MovieFilters_active {
+  background: #1b1212;
+  color: #fff;
+  border-left-color: #e50914;
+  font-weight: 700;
+}
+.MovieFilters_icon {
+  width: 20px;
+  text-align: center;
+  font-size: .95rem;
+}
+.MovieFilters_chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.MovieFilters_chip {
+  background: #161616;
+  border: 1px solid #262626;
+  color: #bbb;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: .78rem;
+  cursor: pointer;
+  transition: all .15s;
+}
+.MovieFilters_chip:hover {
+  border-color: #555;
+  color: #fff;
+}
+.MovieFilters_chipActive {
+  background: #fff;
+  border-color: #fff;
+  color: #111;
+  font-weight: 700;
+}
+.MovieFilters_note {
+  margin: 8px 4px 4px;
+  color: #8a7d57;
+  font-size: .74rem;
+  line-height: 1.45;
+  background: #17140c;
+  border: 1px solid #2b2512;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+@media (max-width: 900px) {
+  .MovieFilters_panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    z-index: 1300;
+    max-height: 85vh;
+    border-radius: 18px 18px 0 0;
+    border: 0;
+    border-top: 1px solid #2a2a2a;
+    transform: translateY(105%);
+    transition: transform .28s ease;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, .6);
+  }
+  .MovieFilters_panel.MovieFilters_open {
+    transform: translateY(0);
+  }
+  .MovieFilters_sheetHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px 6px;
+  }
+  .MovieFilters_sheetHead strong {
+    font-size: 1rem;
+  }
+  .MovieFilters_closeBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #2a2a2a;
+    background: #161616;
+    color: #aaa;
+    cursor: pointer;
+  }
+  .MovieFilters_footer {
+    display: flex;
+    gap: 10px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    border-top: 1px solid #1c1c1c;
+    background: #0e0e0e;
+  }
+  .MovieFilters_apply {
+    flex: 1;
+    background: #e50914;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 800;
+    font-size: .9rem;
+    cursor: pointer;
+  }
+  .MovieFilters_reset {
+    background: #161616;
+    color: #ddd;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .MovieFilters_backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1250;
+    background: rgba(0, 0, 0, .65);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+  }
+  .MovieFilters_backdropOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .MovieFilters_item {
+    padding: 11px 10px;
+  }
+  .MovieFilters_chip {
+    padding: 8px 14px;
+    font-size: .82rem;
+  }
+}
+@media (min-width: 901px) {
+  .MovieFilters_footer .MovieFilters_apply {
+    display: none;
+  }
+  .MovieFilters_footerActive {
+    display: flex;
+    padding: 10px 14px;
+    border-top: 1px solid #1c1c1c;
+  }
+}
+.MovieFilters_chipMature {
+  border-color: #5a1a1a;
+  color: #ff7b7b;
+  font-weight: 700;
+}
+.MovieFilters_chipMature:hover {
+  border-color: #e50914;
+  color: #fff;
+}
+.MovieFilters_chipMatureActive {
+  background: #e50914;
+  border-color: #e50914;
+  color: #fff;
+}
+
+/* ../../home/claude/proj/src/components/Player.module.css */
+.Player_wrap {
+  margin-bottom: 2.5rem;
+  animation: Player_fadeSlideIn 0.3s ease;
+}
+@keyframes Player_fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.Player_meta {
+  margin-bottom: 1rem;
+}
+.Player_metaTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.Player_title {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-style: italic;
+  color: #fff;
+  line-height: 1.2;
+}
+.Player_closeBtn {
+  background: none;
+  border: 0.5px solid #2a2a2a;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 11px;
+  flex-shrink: 0;
+  transition: color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.Player_closeBtn:hover {
+  color: #ccc;
+  border-color: #555;
+}
+.Player_pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.Player_pill {
+  padding: 3px 10px;
+  background: #141414;
+  border: 0.5px solid #252525;
+  border-radius: 20px;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.Player_gold {
+  border-color: rgba(200, 169, 110, 0.3);
+  color: var(--gold);
+}
+.Player_badge {
+  border-color: rgba(200, 169, 110, 0.2);
+  color: rgba(200, 169, 110, 0.85);
+}
+.Player_overview {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 700px;
+}
+.Player_playerBox {
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 0.5px solid #1e1e1e;
+  position: relative;
+}
+.Player_playerBox iframe {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 50vw, 560px);
+  border: none;
+}
+@media (max-width: 480px) {
+  .Player_playerBox iframe {
+    height: 220px;
+  }
+}
+.Player_imdb {
+  color: #f5c518;
+  border-color: #4a3f10;
+  text-decoration: none;
+}
+.Player_imdb:hover {
+  background: #2a2408;
+}
+.Player_rt {
+  color: #fa5a3c;
+  border-color: #4a2218;
+}
+.Player_awards {
+  color: #a89a6a;
+  font-size: 0.82rem;
+  margin-top: 0.5rem;
+}
+
+/* ../../home/claude/proj/src/pages/Movies.module.css */
+.Movies_searchRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+.Movies_input {
+  flex: 1;
+  background: var(--bg-input);
+  border: 0.5px solid var(--border);
+  color: var(--text);
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.Movies_input:focus {
+  border-color: rgba(200, 169, 110, 0.45);
+}
+.Movies_input::placeholder {
+  color: var(--text-dim);
+}
+.Movies_btn {
+  padding: 11px 28px;
+  background: var(--gold);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  font-family: var(--font);
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.Movies_btn:hover {
+  background: var(--gold-hover);
+  transform: translateY(-1px);
+}
+.Movies_btn:active {
+  transform: translateY(0);
+}
+.Movies_sectionLabel {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.Movies_layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+.Movies_content {
+  min-width: 0;
+}
+.Movies_quickBar {
+  display: none;
+}
+.Movies_resultsHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.Movies_resultsHead .Movies_sectionLabel {
+  margin-bottom: 0;
+}
+.Movies_sortSelect {
+  background: #171717;
+  color: #ddd;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: .8rem;
+  cursor: pointer;
+  outline: none;
+}
+.Movies_sortSelect:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+.Movies_searchHint {
+  color: #8a8a8a;
+  font-size: .8rem;
+  margin: -1rem 0 1.2rem;
+}
+.Movies_searchHint button {
+  background: none;
+  border: 0;
+  color: #e50914;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0 4px;
+}
+@media (max-width: 900px) {
+  .Movies_layout {
+    display: block;
+  }
+  .Movies_searchRow {
+    margin-bottom: 1rem;
+  }
+  .Movies_btn {
+    padding: 11px 18px;
+  }
+  .Movies_quickBar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 0 -1rem 1.2rem;
+    padding: 0 1rem;
+  }
+  .Movies_filterBtn {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    color: #111;
+    border: 0;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 800;
+    font-size: .8rem;
+    cursor: pointer;
+  }
+  .Movies_badge {
+    background: #e50914;
+    color: #fff;
+    border-radius: 999px;
+    min-width: 18px;
+    height: 18px;
+    display: inline-grid;
+    place-items: center;
+    font-size: .68rem;
+  }
+  .Movies_chipRow {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex: 1;
+    padding-bottom: 2px;
+  }
+  .Movies_chipRow::-webkit-scrollbar {
+    display: none;
+  }
+  .Movies_quickChip {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    background: #161616;
+    border: 1px solid #262626;
+    color: #bbb;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: .8rem;
+    cursor: pointer;
+  }
+  .Movies_quickChipActive {
+    background: #e50914;
+    border-color: #e50914;
+    color: #fff;
+    font-weight: 700;
+  }
+}
+.Movies_ageBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, .8);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+.Movies_ageBox {
+  width: min(400px, 100%);
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 26px 22px;
+  text-align: center;
+}
+.Movies_ageIcon {
+  font-size: 2.2rem;
+}
+.Movies_ageBox h3 {
+  margin: .4rem 0 .5rem;
+  font-size: 1.2rem;
+}
+.Movies_ageBox p {
+  color: #aaa;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+.Movies_ageBtns {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.3rem;
+}
+.Movies_ageBtns button {
+  flex: 1;
+  border-radius: 10px;
+  padding: 12px 8px;
+  font-weight: 800;
+  font-size: .88rem;
+  cursor: pointer;
+}
+.Movies_ageNo {
+  background: #1d1d1d;
+  color: #ddd;
+  border: 1px solid #2f2f2f;
+}
+.Movies_ageYes {
+  background: #e50914;
+  color: #fff;
+  border: 0;
+}
+
+/* ../../home/claude/proj/src/components/UniversalCard.module.css */
+.UniversalCard_card {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+.UniversalCard_poster {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #181818;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .35);
+}
+.UniversalCard_poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease, filter .35s ease;
+}
+.UniversalCard_poster > span {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #777;
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+.UniversalCard_overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .65));
+  opacity: 0;
+  transition: opacity .2s;
+}
+.UniversalCard_overlay span {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  padding-left: 2px;
+}
+.UniversalCard_card:hover .UniversalCard_overlay {
+  opacity: 1;
+}
+.UniversalCard_card:hover img {
+  transform: scale(1.05);
+  filter: brightness(.78);
+}
+.UniversalCard_info {
+  padding: .45rem .1rem 0;
+}
+.UniversalCard_info strong {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: .82rem;
+  font-weight: 600;
+}
+.UniversalCard_info div {
+  display: flex;
+  gap: .55rem;
+  color: #aaa;
+  font-size: .7rem;
+  margin-top: .18rem;
+}
+.UniversalCard_info span {
+  color: #d7b36a;
+}
+.UniversalCard_info small {
+  color: #777;
+}
+
+/* ../../home/claude/proj/src/components/AnimeModal.module.css */
+.AnimeModal_backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, .82);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 4vh 16px;
+}
+.AnimeModal_modal {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .6);
+}
+.AnimeModal_close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(0, 0, 0, .65);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+.AnimeModal_trailer {
+  aspect-ratio: 16/9;
+  background: #000;
+}
+.AnimeModal_trailer iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.AnimeModal_body {
+  display: flex;
+  gap: 22px;
+  padding: 22px;
+}
+.AnimeModal_poster {
+  flex: 0 0 190px;
+}
+.AnimeModal_poster img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+  background: #222;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.AnimeModal_info {
+  min-width: 0;
+  flex: 1;
+}
+.AnimeModal_info h2 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  letter-spacing: -.02em;
+}
+.AnimeModal_alt {
+  color: #888;
+  font-size: .85rem;
+  margin: 0 0 12px;
+}
+.AnimeModal_pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.AnimeModal_pill {
+  background: #222;
+  border: 1px solid #333;
+  color: #ccc;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: .75rem;
+}
+.AnimeModal_gold {
+  color: #d7b36a;
+  border-color: #4a3d1f;
+}
+.AnimeModal_genre {
+  background: #2a1414;
+  border-color: #4a2020;
+  color: #e6a0a0;
+}
+.AnimeModal_facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px 18px;
+  margin: 14px 0;
+  font-size: .82rem;
+  color: #aaa;
+}
+.AnimeModal_facts b {
+  display: block;
+  color: #666;
+  font-weight: 600;
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.AnimeModal_synopsis {
+  color: #ccc;
+  line-height: 1.6;
+  font-size: .92rem;
+  white-space: pre-line;
+}
+.AnimeModal_note {
+  color: #999;
+  font-size: .85rem;
+  padding: 6px 0;
+}
+.AnimeModal_link {
+  display: inline-block;
+  margin-top: 14px;
+  color: #fff;
+  background: #e50914;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: .85rem;
+}
+@media (max-width: 640px) {
+  .AnimeModal_body {
+    flex-direction: column;
+  }
+  .AnimeModal_poster {
+    flex-basis: auto;
+    max-width: 170px;
+  }
+}
+
+/* ../../home/claude/proj/src/pages/Catalog.module.css */
+.Catalog_page {
+  padding-top: .5rem;
+}
+.Catalog_heading {
+  padding: 2rem 0 1.2rem;
+}
+.Catalog_heading > span {
+  font-size: .65rem;
+  color: #e50914;
+  font-weight: 800;
+  letter-spacing: .2em;
+}
+.Catalog_heading h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -.04em;
+  margin: .35rem 0;
+}
+.Catalog_heading p {
+  color: #777;
+}
+.Catalog_search {
+  display: flex;
+  max-width: 650px;
+  margin: 0 0 2rem;
+}
+.Catalog_search input {
+  flex: 1;
+  background: #171717;
+  border: 1px solid #292929;
+  border-right: 0;
+  color: #fff;
+  padding: .8rem 1rem;
+  outline: 0;
+}
+.Catalog_search input:focus {
+  border-color: #555;
+}
+.Catalog_search button {
+  background: #fff;
+  color: #111;
+  border: 0;
+  padding: 0 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.Catalog_error {
+  padding: .8rem 1rem;
+  border: 1px solid #452525;
+  background: #201313;
+  color: #dca4a4;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  font-size: .85rem;
+}
+.Catalog_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 1.1rem;
+}
+.Catalog_tabs {
+  display: flex;
+  gap: .5rem;
+  margin: 0 0 1.4rem;
+  flex-wrap: wrap;
+}
+.Catalog_tabs button {
+  background: #171717;
+  color: #bbb;
+  border: 1px solid #292929;
+  padding: .5rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .82rem;
+  cursor: pointer;
+}
+.Catalog_tabs button:hover {
+  border-color: #555;
+  color: #fff;
+}
+.Catalog_tabs button.Catalog_tabActive {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+.Catalog_status {
+  padding: 2rem 0;
+  color: #777;
+  text-align: center;
+  font-size: .9rem;
+}
+@media (max-width: 600px) {
+  .Catalog_grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: .75rem;
+  }
+}
+
+/* ../../home/claude/proj/src/components/HeroSlider.module.css */
+.HeroSlider_hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  background: #101010;
+  border-bottom: 1px solid #191919;
+  overflow: hidden;
+}
+.HeroSlider_slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 20%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  transform: scale(1.04);
+}
+.HeroSlider_slideActive {
+  opacity: 1;
+  animation: HeroSlider_kenburns 9s ease-out forwards;
+}
+@keyframes HeroSlider_kenburns {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.11);
+  }
+}
+.HeroSlider_shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      #070707 0%,
+      rgba(7, 7, 7, .8) 36%,
+      rgba(7, 7, 7, .15) 100%),
+    linear-gradient(
+      0deg,
+      #070707 0%,
+      transparent 48%);
+}
+.HeroSlider_copy {
+  position: relative;
+  z-index: 2;
+  width: min(650px, 90%);
+  padding: 6rem clamp(1rem, 5vw, 3.5rem) 4.2rem;
+  animation: HeroSlider_copyIn .7s ease both;
+}
+@keyframes HeroSlider_copyIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.HeroSlider_kicker {
+  color: #e50914;
+  font-size: .68rem;
+  letter-spacing: .18em;
+  font-weight: 800;
+}
+.HeroSlider_hero h1 {
+  font-size: clamp(2.1rem, 5.6vw, 4.6rem);
+  line-height: .98;
+  margin: .7rem 0 .8rem;
+  letter-spacing: -.04em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, .6);
+}
+.HeroSlider_meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: #cfcfcf;
+  font-size: .9rem;
+  margin-bottom: .8rem;
+}
+.HeroSlider_rating {
+  color: #f5c518;
+  font-weight: 800;
+}
+.HeroSlider_hero p {
+  color: #c9c9c9;
+  max-width: 570px;
+  font-size: 1rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.HeroSlider_actions {
+  display: flex;
+  gap: .7rem;
+  margin-top: 1.4rem;
+}
+.HeroSlider_primary,
+.HeroSlider_secondary {
+  border: 0;
+  border-radius: 4px;
+  padding: .75rem 1.4rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: .95rem;
+}
+.HeroSlider_primary {
+  background: #fff;
+  color: #111;
+}
+.HeroSlider_primary:hover {
+  background: #e6e6e6;
+}
+.HeroSlider_secondary {
+  background: rgba(90, 90, 90, .7);
+  color: #fff;
+}
+.HeroSlider_secondary:hover {
+  background: rgba(120, 120, 120, .75);
+}
+.HeroSlider_arrow {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 64px;
+  border: 0;
+  background: rgba(0, 0, 0, .35);
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .2s, background .2s;
+}
+.HeroSlider_hero:hover .HeroSlider_arrow {
+  opacity: 1;
+}
+.HeroSlider_arrow:hover {
+  background: rgba(0, 0, 0, .65);
+}
+.HeroSlider_prev {
+  left: 0;
+  border-radius: 0 6px 6px 0;
+}
+.HeroSlider_next {
+  right: 0;
+  border-radius: 6px 0 0 6px;
+}
+.HeroSlider_dots {
+  position: absolute;
+  z-index: 3;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: 1.6rem;
+  display: flex;
+  gap: 7px;
+}
+.HeroSlider_dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 99px;
+  border: 0;
+  background: rgba(255, 255, 255, .35);
+  cursor: pointer;
+  padding: 0;
+  transition: all .3s;
+}
+.HeroSlider_dot:hover {
+  background: rgba(255, 255, 255, .7);
+}
+.HeroSlider_dotActive {
+  width: 26px;
+  background: #e50914;
+}
+@media (max-width: 620px) {
+  .HeroSlider_hero {
+    min-height: 500px;
+  }
+  .HeroSlider_copy {
+    padding-bottom: 3.4rem;
+  }
+  .HeroSlider_hero p {
+    font-size: .88rem;
+    -webkit-line-clamp: 3;
+  }
+  .HeroSlider_arrow {
+    display: none;
+  }
+  .HeroSlider_dots {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 1.1rem;
+  }
+  .HeroSlider_shade {
+    background:
+      linear-gradient(
+        0deg,
+        #070707 0%,
+        rgba(7, 7, 7, .75) 45%,
+        rgba(7, 7, 7, .2) 100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .HeroSlider_slideActive {
+    animation: none;
+  }
+  .HeroSlider_copy {
+    animation: none;
+  }
+  .HeroSlider_slide {
+    transition: none;
+  }
+}

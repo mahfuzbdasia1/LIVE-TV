@@ -1,0 +1,10 @@
+.extras { margin-top: 1.4rem; }
+.where { margin-bottom: 1.6rem; }
+.where h3 { font-size: .95rem; color: #ddd; margin-bottom: .6rem; font-weight: 700; }
+.where h3 small { color: #666; font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 5px 12px; border-radius: 20px; font-size: 12px; text-decoration: none; color: #bbb; background: #141414; border: 1px solid #262626; }
+a.chip:hover { border-color: #555; color: #fff; }
+.sub { border-color: rgba(229, 9, 20, .45); color: #ff9a9f; }
+.free { border-color: rgba(70, 200, 120, .45); color: #7fe0a6; }
+.rent, .buy { color: #aaa; }

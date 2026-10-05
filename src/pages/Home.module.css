@@ -1,0 +1,13 @@
+.home { margin:-2rem clamp(-2.5rem,-4vw,-1rem) 0; }
+.hero { min-height:540px; display:flex; align-items:flex-end; background-color:#101010; background-size:cover; background-position:center; border-bottom:1px solid #191919; }
+.heroCopy { width:min(650px,90%); padding:6rem clamp(1rem,5vw,3.5rem) 4rem; }
+.kicker { color:#e50914; font-size:.68rem; letter-spacing:.18em; font-weight:800; }
+.hero h1 { font-size:clamp(2.2rem,6vw,5rem); line-height:.95; margin:.7rem 0 1rem; letter-spacing:-.04em; }
+.hero p { color:#c4c4c4; max-width:570px; font-size:1rem; line-height:1.55; }
+.heroActions { display:flex; gap:.7rem; margin-top:1.5rem; }
+.primary,.secondary { border:0; border-radius:4px; padding:.75rem 1.25rem; font-weight:800; cursor:pointer; }
+.primary { background:#fff; color:#111; }.secondary { background:rgba(80,80,80,.7); color:#fff; }
+.loading { color:#777; padding:1.5rem 0; }
+.liveBanner { width:100%; display:flex; align-items:center; gap:1rem; padding:1.1rem 1.2rem; margin:0 0 2rem; border:1px solid #292929; border-radius:6px; background:#141414; color:#fff; text-align:left; cursor:pointer; }
+.liveBanner span { color:#e50914; font-size:.7rem; font-weight:800; }.liveBanner strong { font-size:1rem; }.liveBanner small { color:#777; }
+@media(max-width:620px){.hero{min-height:470px}.heroCopy{padding-bottom:2.5rem}.hero p{font-size:.9rem}.liveBanner{flex-wrap:wrap;gap:.4rem}.liveBanner small{width:100%}}

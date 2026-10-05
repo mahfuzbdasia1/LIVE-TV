@@ -1,0 +1,227 @@
+.wrap {
+  background: #0f0f0f;
+  border: 0.5px solid #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.showHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 0.5px solid #1a1a1a;
+  background: #111;
+}
+
+.showPoster {
+  width: 42px;
+  height: 63px;
+  object-fit: cover;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.showMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.showName {
+  font-size: 1rem;
+  font-style: italic;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.showYear {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.showRating {
+  font-size: 12px;
+  color: var(--gold);
+}
+
+/* Season tabs */
+.seasonTabs {
+  display: flex;
+  gap: 6px;
+  padding: 12px 20px;
+  overflow-x: auto;
+  border-bottom: 0.5px solid #1a1a1a;
+  scrollbar-width: none;
+}
+
+.seasonTabs::-webkit-scrollbar { display: none; }
+
+.seasonTab {
+  flex-shrink: 0;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 0.5px solid #2a2a2a;
+  background: transparent;
+  color: #777;
+  font-size: 12px;
+  font-family: var(--font);
+  letter-spacing: 0.05em;
+  transition: all 0.18s;
+  cursor: pointer;
+}
+
+.seasonTab:hover {
+  border-color: rgba(200,169,110,0.4);
+  color: #ccc;
+}
+
+.seasonTab.seasonActive {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0a0a0a;
+  font-weight: 700;
+}
+
+/* Episodes */
+.episodesWrap {
+  padding: 16px 20px 20px;
+}
+
+.epGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.epSkeleton {
+  border-radius: 8px;
+  height: 140px;
+  background: linear-gradient(90deg, #161616 25%, #1e1e1e 50%, #161616 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.epCard {
+  background: #141414;
+  border: 0.5px solid #222;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font);
+  transition: border-color 0.18s, transform 0.18s;
+  padding: 0;
+}
+
+.epCard:hover {
+  border-color: rgba(200,169,110,0.5);
+  transform: translateY(-2px);
+}
+
+.epCard:hover .epPlayOverlay {
+  opacity: 1;
+}
+
+.epThumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.epThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.epCard:hover .epThumb img {
+  transform: scale(1.04);
+}
+
+.epThumbFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.epPlayOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.3rem;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+
+.epInfo {
+  padding: 7px 9px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.epNum {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+.epName {
+  font-size: 12px;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.epRating {
+  font-size: 10px;
+  color: #555;
+  margin-top: 1px;
+}
+
+.noEps {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+@media (max-width: 480px) {
+  .epGrid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+  .showHeader { padding: 12px 14px; }
+  .seasonTabs { padding: 10px 14px; }
+  .episodesWrap { padding: 12px 14px 16px; }
+}
